@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Sensitive config files (contains API keys)
+.mcp.json
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+
+# iFinD skill config (contains auth tokens)
+.claude/skills/ifind-finance-data-1.1.0/mcp_config.json
+
+# Generated reports
+data/reports/
+
+# Temporary files
+data/temp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log

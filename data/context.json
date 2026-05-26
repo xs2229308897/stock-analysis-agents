@@ -1,0 +1,11 @@
+{
+  "userPreferences": {
+    "focusSectors": ["半导体", "AI算力", "电网"],
+    "riskTolerance": "medium",
+    "investmentStyle": "value+growth",
+    "preferredProducts": "ETF联接基金"
+  },
+  "conversationHistory": [],
+  "marketObservations": [],
+  "lastAnalysis": null
+}

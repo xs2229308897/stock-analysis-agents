@@ -1,0 +1,148 @@
+{
+  "market_analysis": {
+    "name": "大盘分析",
+    "description": "分析大盘指数走势和市场情绪",
+    "steps": [
+      {
+        "id": 1,
+        "agent": "collector",
+        "task": "collectMarketOverview",
+        "parallel": false
+      },
+      {
+        "id": 2,
+        "agent": "analyst",
+        "task": "analyzeMarket",
+        "dependsOn": [1]
+      }
+    ]
+  },
+  "sector_analysis": {
+    "name": "板块分析",
+    "description": "分析指定板块的走势、驱动事件和投资机会",
+    "steps": [
+      {
+        "id": 1,
+        "agent": "collector",
+        "task": "collectSectorData",
+        "parallel": true
+      },
+      {
+        "id": 2,
+        "agent": "collector",
+        "task": "collectNewsData",
+        "params": {"type": "sector"},
+        "parallel": true
+      },
+      {
+        "id": 3,
+        "agent": "analyst",
+        "task": "analyzeSector",
+        "dependsOn": [1, 2]
+      },
+      {
+        "id": 4,
+        "agent": "advisor",
+        "task": "generateSectorAdvice",
+        "dependsOn": [3]
+      }
+    ]
+  },
+  "stock_analysis": {
+    "name": "个股分析",
+    "description": "分析指定个股的技术面、基本面和消息面",
+    "steps": [
+      {
+        "id": 1,
+        "agent": "collector",
+        "task": "collectStockData",
+        "parallel": true
+      },
+      {
+        "id": 2,
+        "agent": "collector",
+        "task": "collectNewsData",
+        "params": {"type": "stock"},
+        "parallel": true
+      },
+      {
+        "id": 3,
+        "agent": "analyst",
+        "task": "analyzeStock",
+        "dependsOn": [1, 2]
+      },
+      {
+        "id": 4,
+        "agent": "advisor",
+        "task": "generateStockAdvice",
+        "dependsOn": [3]
+      }
+    ]
+  },
+  "daily_report": {
+    "name": "每日报告",
+    "description": "生成当日收益报告",
+    "steps": [
+      {
+        "id": 1,
+        "agent": "collector",
+        "task": "collectPortfolioPrices",
+        "parallel": false
+      },
+      {
+        "id": 2,
+        "agent": "report",
+        "task": "generateDailyReport",
+        "dependsOn": [1]
+      }
+    ]
+  },
+  "portfolio_update": {
+    "name": "持仓更新",
+    "description": "更新持仓信息（买入/卖出/调仓）",
+    "steps": [
+      {
+        "id": 1,
+        "agent": "advisor",
+        "task": "parsePortfolioOperation",
+        "parallel": false
+      }
+    ]
+  },
+  "full_analysis": {
+    "name": "完整分析",
+    "description": "大盘 + 板块 + 个股 + 投资建议的完整分析流程",
+    "steps": [
+      {
+        "id": 1,
+        "agent": "collector",
+        "task": "collectMarketOverview",
+        "parallel": true
+      },
+      {
+        "id": 2,
+        "agent": "collector",
+        "task": "collectSectorData",
+        "parallel": true
+      },
+      {
+        "id": 3,
+        "agent": "analyst",
+        "task": "analyzeMarket",
+        "dependsOn": [1]
+      },
+      {
+        "id": 4,
+        "agent": "analyst",
+        "task": "analyzeSector",
+        "dependsOn": [2]
+      },
+      {
+        "id": 5,
+        "agent": "advisor",
+        "task": "generateSectorAdvice",
+        "dependsOn": [3, 4]
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "lastUpdated": "2026-05-26",
+  "holdings": [
+    {
+      "code": "012733",
+      "name": "人工智能ETF联接C",
+      "type": "fund",
+      "shares": 0,
+      "costPrice": 0,
+      "currentPrice": 0
+    },
+    {
+      "code": "008086",
+      "name": "5G通信ETF联接C",
+      "type": "fund",
+      "shares": 0,
+      "costPrice": 0,
+      "currentPrice": 0
+    }
+  ],
+  "cash": 0
+}

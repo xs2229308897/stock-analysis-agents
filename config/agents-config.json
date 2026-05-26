@@ -1,0 +1,57 @@
+{
+  "agents": {
+    "leader": {
+      "name": "领导Agent",
+      "skill": "leader-agent",
+      "role": "dispatcher",
+      "maxRetries": 2,
+      "timeout": 60000
+    },
+    "collector": {
+      "name": "信息收集Agent",
+      "skill": "collector-agent",
+      "role": "data_collector",
+      "maxRetries": 3,
+      "timeout": 30000,
+      "rateLimit": {
+        "ifind": {
+          "maxPerSecond": 2,
+          "delayBetweenRequests": 500
+        }
+      }
+    },
+    "analyst": {
+      "name": "信息分析Agent",
+      "skill": "analyst-agent",
+      "role": "analyzer",
+      "maxRetries": 1,
+      "timeout": 45000
+    },
+    "advisor": {
+      "name": "投资建议Agent",
+      "skill": "advisor-agent",
+      "role": "decision_maker",
+      "maxRetries": 1,
+      "timeout": 30000
+    },
+    "report": {
+      "name": "报告Agent",
+      "skill": "report-agent",
+      "role": "reporter",
+      "maxRetries": 2,
+      "timeout": 45000
+    }
+  },
+  "taskQueue": {
+    "maxConcurrent": 3,
+    "retryDelay": 1000,
+    "maxQueueSize": 20
+  },
+  "scheduledTasks": {
+    "dailyReport": {
+      "enabled": true,
+      "cron": "5 15 * * 1-5",
+      "description": "每日15:05自动生成收益报告"
+    }
+  }
+}
