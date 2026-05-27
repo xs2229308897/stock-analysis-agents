@@ -108,7 +108,28 @@ call('stock', 'search_stocks', { query: '今日涨幅排名前20的股票' })
 
 **并发限制**: 免费用户每秒最多 2 个请求，个人版 5 个，企业版 10 个。多个 iFinD 查询之间加 500ms 延迟。
 
-### 3. 其他 MCP 工具
+### 3. 数据保存工具（历史对比）
+- **脚本**: `tools/save-daily-data.js`
+- **功能**: 保存每日盘中数据，支持与昨日数据对比
+- **数据存储**: `data/daily/YYYY-MM-DD.json`
+
+用法：
+```javascript
+const { saveDailyData, loadYesterdayData } = require('./tools/save-daily-data.js');
+
+// 保存当前数据
+saveDailyData({
+    type: 'market_index',
+    data: { /* 大盘数据 */ }
+});
+
+// 加载昨日数据
+const yesterdayData = loadYesterdayData();
+```
+
+**说明**: 由于 iFinD 日频数据在盘中无法提供历史分时数据，本工具通过保存每日数据实现历史对比功能。
+
+### 4. 其他 MCP 工具
 - `aktools` — AKShare 金融数据
 - `china-market-data` — 中国市场综合数据
 - `china-stock-mcp` — 中国股票数据

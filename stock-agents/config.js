@@ -122,10 +122,11 @@ class Config {
     if (customPath) return customPath;
 
     // 自动检测常见位置
+    const homeDir = process.env.HOME || process.env.USERPROFILE || '';
     const possiblePaths = [
       path.join(process.cwd(), '.claude', 'skills', 'ifind-finance-data-1.1.0', 'call-node.js'),
       path.join(__dirname, '..', '.claude', 'skills', 'ifind-finance-data-1.1.0', 'call-node.js'),
-      path.join(process.home, '.claude', 'skills', 'ifind-finance-data-1.1.0', 'call-node.js')
+      path.join(homeDir, '.claude', 'skills', 'ifind-finance-data-1.1.0', 'call-node.js')
     ];
 
     for (const p of possiblePaths) {
