@@ -183,10 +183,11 @@ class LeaderAgent {
         result = { message: '未识别的指令类型' };
     }
 
-    // 记录交互
-    this.memory.recordInteraction({ user: input, intent, entities: mergedEntities });
-
-    this._saveContext({ user: input, intent, result: result.summary || '完成' });
+    // 只记录有效意图的交互，过滤无关输入
+    if (intent.type !== 'unknown') {
+      this.memory.recordInteraction({ user: input, intent, entities: mergedEntities });
+      this._saveContext({ user: input, intent, result: result.summary || '完成' });
+    }
 
     return { intent, entities: mergedEntities, ...result };
   }
