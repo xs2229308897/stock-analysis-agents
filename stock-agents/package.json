@@ -1,0 +1,29 @@
+{
+  "name": "stock-agents",
+  "version": "1.0.0",
+  "description": "多Agents股市分析系统 - 基于Claude Code的智能投资助手",
+  "main": "index.js",
+  "scripts": {
+    "init": "node scripts/init.js",
+    "test": "node scripts/test.js"
+  },
+  "keywords": [
+    "stock",
+    "analysis",
+    "agents",
+    "claude",
+    "investment",
+    "a-share"
+  ],
+  "author": "",
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "config.js",
+    "agents/",
+    "scripts/",
+    "SKILL.md",
+    "README.md",
+    "package.json"
+  ]
+}
